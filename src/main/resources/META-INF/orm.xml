@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
+http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+version="2.0">
+
+	<named-query name="findAllGenres">
+		<query>select g from Genre g order by g.naam</query>
+	</named-query>
+	
+	<named-query name="findMoviesByGenre">
+		<query>select f from Movie f where f.genreNr = :genre order by f.titel</query>
+	</named-query>
+	
+	<named-query name="findByFamilyName">
+		<query>select k from Klant k where k.familienaam like :woord order by k.familienaam</query>
+	</named-query>
+	
+	<named-query name="findReservations">
+		<query>select r from Reservatie r order by r.datum desc</query>
+	</named-query>
+	
+	<!-- SELECT films.genrenr, naam, COUNT(films.filmNr) aantal
+	FROM genres LEFT JOIN films ON genres.genrenr = films.genrenr
+	GROUP BY genrenr ORDER BY naam -->
+
+</entity-mappings>
